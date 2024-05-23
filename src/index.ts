@@ -32,9 +32,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-process.on('unhandledPromiseRejection', () => {
-  console.log('Promise rejection error');
+process.on('exit', (code) => {
+  console.log('Sensed');
+  console.log(code);
 });
+
+process.exit(0);
 
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
